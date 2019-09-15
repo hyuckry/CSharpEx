@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericalMethods.Library", "NumericalMethods.Library\NumericalMethods.Library.csproj", "{0FF38D4F-60F0-4188-8FBA-5B640841D3BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericalMethod.Tests", "NumericalMethod.Tests\NumericalMethod.Tests.csproj", "{7432EE2F-A2EF-4298-90E4-CF998541814B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FF38D4F-60F0-4188-8FBA-5B640841D3BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF38D4F-60F0-4188-8FBA-5B640841D3BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF38D4F-60F0-4188-8FBA-5B640841D3BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF38D4F-60F0-4188-8FBA-5B640841D3BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7432EE2F-A2EF-4298-90E4-CF998541814B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7432EE2F-A2EF-4298-90E4-CF998541814B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7432EE2F-A2EF-4298-90E4-CF998541814B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7432EE2F-A2EF-4298-90E4-CF998541814B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49ED3BCD-7772-4775-AA5B-ECE0769C6147}
+	EndGlobalSection
+EndGlobal
