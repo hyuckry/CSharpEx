@@ -1,0 +1,1 @@
+Overuse of primitives, instead of better abstractions or data structures, results in excess code required to enforce constraints.
