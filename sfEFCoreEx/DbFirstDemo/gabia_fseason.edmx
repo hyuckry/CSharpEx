@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbnumnaModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="books">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="author" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="updated_at" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="256" />
+          <Property Name="createdAt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="updatedAt" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CateName" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="CateDesc" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="updatedAt" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dart_corpcode">
+          <Key>
+            <PropertyRef Name="corp_code" />
+          </Key>
+          <Property Name="corp_code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="corp_name" Type="varchar" MaxLength="150" />
+          <Property Name="stock_code" Type="varchar" MaxLength="10" />
+          <Property Name="modify_date" Type="date" />
+        </EntityType>
+        <!--생성 중 오류 발생:
+경고 6002: 테이블/뷰 'def.dbnumna.dart_corpcode2'에 기본 키가 정의되지 않았습니다. 키가 유추되었고 읽기 전용 테이블/뷰로 정의되었습니다.-->
+        <EntityType Name="dart_corpcode2">
+          <Key>
+            <PropertyRef Name="corp_code" />
+          </Key>
+          <Property Name="corp_code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="corp_name" Type="varchar" MaxLength="150" />
+          <Property Name="stock_code" Type="varchar" MaxLength="10" />
+          <Property Name="modify_date" Type="date" />
+        </EntityType>
+        <EntityType Name="HashTags">
+          <Key>
+            <PropertyRef Name="HTName" />
+            <PropertyRef Name="TodoId" />
+          </Key>
+          <Property Name="HTName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="TodoId" Type="int" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="updatedAt" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IPOSchedule">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Type" Type="text" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="lowPrice" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="CompanyType" Type="text" />
+          <Property Name="Underwriter" Type="text" />
+          <Property Name="State" Type="text" />
+          <Property Name="Competition" Type="text" />
+          <Property Name="ListDate" Type="datetime" Precision="0" />
+          <Property Name="StartDate" Type="datetime" Precision="0" />
+          <Property Name="EndDate" Type="datetime" Precision="0" />
+          <Property Name="RegDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="projects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="text" Nullable="false" />
+          <Property Name="client" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="service" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="url" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="updatedAt" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RawData">
+          <Key>
+            <PropertyRef Name="RawId" />
+          </Key>
+          <Property Name="RawId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Req" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Result" Type="text" Nullable="false" />
+          <Property Name="createdAt" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TodoItem">
+          <Key>
+            <PropertyRef Name="TodoId" />
+          </Key>
+          <Property Name="TodoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TodoTitle" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="TodoDesc" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Completed" Type="int" Nullable="false" />
+          <Property Name="Due" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="updatedAt" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="CateId" Type="int" Nullable="false" />
+          <Property Name="TopicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Content" Type="text" Nullable="false" />
+          <Property Name="Author" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="updatedAt" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <!--생성 중 오류 발생:
+경고 6002: 테이블/뷰 'def.dbnumna.tour_crawlingData'에 기본 키가 정의되지 않았습니다. 키가 유추되었고 읽기 전용 테이블/뷰로 정의되었습니다.-->
+        <EntityType Name="tour_crawlingData">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="area" />
+            <PropertyRef Name="contents" />
+            <PropertyRef Name="keyword" />
+            <PropertyRef Name="regdate" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="area" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="contents" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="keyword" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="regdate" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--생성 중 오류 발생:
+경고 6002: 테이블/뷰 'def.dbnumna.tour_keyword'에 기본 키가 정의되지 않았습니다. 키가 유추되었고 읽기 전용 테이블/뷰로 정의되었습니다.-->
+        <EntityType Name="tour_keyword">
+          <Key>
+            <PropertyRef Name="searchword" />
+          </Key>
+          <Property Name="searchword" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="sns" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="token" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="updatedAt" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WiseSaying">
+          <Key>
+            <PropertyRef Name="WSId" />
+          </Key>
+          <Property Name="WSId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WSContent" Type="text" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="createdAt" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="updatedAt" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dbnumnaModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="books" EntityType="Self.books" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="dart_corpcode" EntityType="Self.dart_corpcode" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="HashTags" EntityType="Self.HashTags" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="IPOSchedule" EntityType="Self.IPOSchedule" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="projects" EntityType="Self.projects" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="RawData" EntityType="Self.RawData" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="TodoItem" EntityType="Self.TodoItem" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="Topic" EntityType="Self.Topic" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="WiseSaying" EntityType="Self.WiseSaying" Schema="dbnumna" store:Type="Tables" />
+          <EntitySet Name="dart_corpcode2" EntityType="Self.dart_corpcode2" store:Type="Tables" store:Schema="dbnumna">
+            <DefiningQuery>SELECT 
+`dart_corpcode2`.`corp_code`, 
+`dart_corpcode2`.`corp_name`, 
+`dart_corpcode2`.`stock_code`, 
+`dart_corpcode2`.`modify_date`
+ FROM `dart_corpcode2` AS `dart_corpcode2`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tour_crawlingData" EntityType="Self.tour_crawlingData" store:Type="Tables" store:Schema="dbnumna">
+            <DefiningQuery>SELECT 
+`tour_crawlingData`.`id`, 
+`tour_crawlingData`.`title`, 
+`tour_crawlingData`.`price`, 
+`tour_crawlingData`.`area`, 
+`tour_crawlingData`.`contents`, 
+`tour_crawlingData`.`keyword`, 
+`tour_crawlingData`.`regdate`
+ FROM `tour_crawlingData` AS `tour_crawlingData`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tour_keyword" EntityType="Self.tour_keyword" store:Type="Tables" store:Schema="dbnumna">
+            <DefiningQuery>SELECT 
+`tour_keyword`.`searchword`
+ FROM `tour_keyword` AS `tour_keyword`</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbnumnaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="books">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="updated_at" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImagePath" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="createdAt" Type="DateTime" Nullable="false" />
+          <Property Name="updatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CateName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CateDesc" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Nullable="false" />
+          <Property Name="updatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dart_corpcode">
+          <Key>
+            <PropertyRef Name="corp_code" />
+          </Key>
+          <Property Name="corp_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="corp_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="stock_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="modify_date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="HashTags">
+          <Key>
+            <PropertyRef Name="HTName" />
+            <PropertyRef Name="TodoId" />
+          </Key>
+          <Property Name="HTName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TodoId" Type="Int32" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Nullable="false" />
+          <Property Name="updatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IPOSchedule">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Type" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" />
+          <Property Name="lowPrice" Type="Decimal" />
+          <Property Name="CompanyType" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Underwriter" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Competition" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="ListDate" Type="DateTime" />
+          <Property Name="StartDate" Type="DateTime" />
+          <Property Name="EndDate" Type="DateTime" />
+          <Property Name="RegDate" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="projects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="service" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdAt" Type="DateTime" Nullable="false" />
+          <Property Name="updatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RawData">
+          <Key>
+            <PropertyRef Name="RawId" />
+          </Key>
+          <Property Name="RawId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Req" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Result" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TodoItem">
+          <Key>
+            <PropertyRef Name="TodoId" />
+          </Key>
+          <Property Name="TodoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TodoTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TodoDesc" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Completed" Type="Int32" Nullable="false" />
+          <Property Name="Due" Type="DateTime" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Nullable="false" />
+          <Property Name="updatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="TopicId" />
+          </Key>
+          <Property Name="CateId" Type="Int32" Nullable="false" />
+          <Property Name="TopicId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Author" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Nullable="false" />
+          <Property Name="updatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sns" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="token" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdAt" Type="DateTime" Nullable="false" />
+          <Property Name="updatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WiseSaying">
+          <Key>
+            <PropertyRef Name="WSId" />
+          </Key>
+          <Property Name="WSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WSContent" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="createdAt" Type="DateTime" Nullable="false" />
+          <Property Name="updatedAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dart_corpcode2">
+          <Key>
+            <PropertyRef Name="corp_code" />
+          </Key>
+          <Property Name="corp_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="corp_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="stock_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="modify_date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="tour_crawlingData">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="area" />
+            <PropertyRef Name="contents" />
+            <PropertyRef Name="keyword" />
+            <PropertyRef Name="regdate" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" />
+          <Property Name="area" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contents" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="keyword" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="regdate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="tour_keyword">
+          <Key>
+            <PropertyRef Name="searchword" />
+          </Key>
+          <Property Name="searchword" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dbnumnaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+          <EntitySet Name="books" EntityType="Self.books" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="dart_corpcode" EntityType="Self.dart_corpcode" />
+          <EntitySet Name="HashTags" EntityType="Self.HashTags" />
+          <EntitySet Name="IPOSchedule" EntityType="Self.IPOSchedule" />
+          <EntitySet Name="projects" EntityType="Self.projects" />
+          <EntitySet Name="RawData" EntityType="Self.RawData" />
+          <EntitySet Name="TodoItem" EntityType="Self.TodoItem" />
+          <EntitySet Name="Topic" EntityType="Self.Topic" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="WiseSaying" EntityType="Self.WiseSaying" />
+          <EntitySet Name="dart_corpcode2" EntityType="Self.dart_corpcode2" />
+          <EntitySet Name="tour_crawlingData" EntityType="Self.tour_crawlingData" />
+          <EntitySet Name="tour_keyword" EntityType="Self.tour_keyword" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbnumnaModelStoreContainer" CdmEntityContainer="dbnumnaEntities">
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="dbnumnaModel.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="books">
+            <EntityTypeMapping TypeName="dbnumnaModel.books">
+              <MappingFragment StoreEntitySet="books">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="dbnumnaModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CateName" ColumnName="CateName" />
+                <ScalarProperty Name="CateDesc" ColumnName="CateDesc" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dart_corpcode">
+            <EntityTypeMapping TypeName="dbnumnaModel.dart_corpcode">
+              <MappingFragment StoreEntitySet="dart_corpcode">
+                <ScalarProperty Name="corp_code" ColumnName="corp_code" />
+                <ScalarProperty Name="corp_name" ColumnName="corp_name" />
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HashTags">
+            <EntityTypeMapping TypeName="dbnumnaModel.HashTags">
+              <MappingFragment StoreEntitySet="HashTags">
+                <ScalarProperty Name="HTName" ColumnName="HTName" />
+                <ScalarProperty Name="TodoId" ColumnName="TodoId" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IPOSchedule">
+            <EntityTypeMapping TypeName="dbnumnaModel.IPOSchedule">
+              <MappingFragment StoreEntitySet="IPOSchedule">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="lowPrice" ColumnName="lowPrice" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="Underwriter" ColumnName="Underwriter" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Competition" ColumnName="Competition" />
+                <ScalarProperty Name="ListDate" ColumnName="ListDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projects">
+            <EntityTypeMapping TypeName="dbnumnaModel.projects">
+              <MappingFragment StoreEntitySet="projects">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="client" ColumnName="client" />
+                <ScalarProperty Name="service" ColumnName="service" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RawData">
+            <EntityTypeMapping TypeName="dbnumnaModel.RawData">
+              <MappingFragment StoreEntitySet="RawData">
+                <ScalarProperty Name="RawId" ColumnName="RawId" />
+                <ScalarProperty Name="Req" ColumnName="Req" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TodoItem">
+            <EntityTypeMapping TypeName="dbnumnaModel.TodoItem">
+              <MappingFragment StoreEntitySet="TodoItem">
+                <ScalarProperty Name="TodoId" ColumnName="TodoId" />
+                <ScalarProperty Name="TodoTitle" ColumnName="TodoTitle" />
+                <ScalarProperty Name="TodoDesc" ColumnName="TodoDesc" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="Due" ColumnName="Due" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Topic">
+            <EntityTypeMapping TypeName="dbnumnaModel.Topic">
+              <MappingFragment StoreEntitySet="Topic">
+                <ScalarProperty Name="CateId" ColumnName="CateId" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="dbnumnaModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="sns" ColumnName="sns" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WiseSaying">
+            <EntityTypeMapping TypeName="dbnumnaModel.WiseSaying">
+              <MappingFragment StoreEntitySet="WiseSaying">
+                <ScalarProperty Name="WSId" ColumnName="WSId" />
+                <ScalarProperty Name="WSContent" ColumnName="WSContent" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dart_corpcode2">
+            <EntityTypeMapping TypeName="dbnumnaModel.dart_corpcode2">
+              <MappingFragment StoreEntitySet="dart_corpcode2">
+                <ScalarProperty Name="corp_code" ColumnName="corp_code" />
+                <ScalarProperty Name="corp_name" ColumnName="corp_name" />
+                <ScalarProperty Name="stock_code" ColumnName="stock_code" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_crawlingData">
+            <EntityTypeMapping TypeName="dbnumnaModel.tour_crawlingData">
+              <MappingFragment StoreEntitySet="tour_crawlingData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="keyword" ColumnName="keyword" />
+                <ScalarProperty Name="regdate" ColumnName="regdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_keyword">
+            <EntityTypeMapping TypeName="dbnumnaModel.tour_keyword">
+              <MappingFragment StoreEntitySet="tour_keyword">
+                <ScalarProperty Name="searchword" ColumnName="searchword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="없음" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

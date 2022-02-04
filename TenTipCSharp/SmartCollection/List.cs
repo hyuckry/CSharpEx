@@ -42,7 +42,7 @@ namespace SmartCollection
 
         public IEnumerator<T> GetEnumerator()
         {
-             
+            return null;
         }
 
         internal class SmartListEnumerator : IEnumerator<T>

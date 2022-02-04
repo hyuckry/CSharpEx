@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{62B97368-FCEC-4AAA-BD6E-0BDA10563061}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpeedBenchmark", "ConsoleApp1\SpeedBenchmark.csproj", "{62B97368-FCEC-4AAA-BD6E-0BDA10563061}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCollection", "SmartCollection\SmartCollection.csproj", "{FABBB21D-5C6F-488D-BE35-1D1A4E3F3049}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCollection", "SmartCollection\SmartCollection.csproj", "{FABBB21D-5C6F-488D-BE35-1D1A4E3F3049}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCollectionTests", "SmartCollectionTests\SmartCollectionTests.csproj", "{88D71111-884C-4488-AC63-AF08D25FB362}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCollectionTests", "SmartCollectionTests\SmartCollectionTests.csproj", "{88D71111-884C-4488-AC63-AF08D25FB362}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
