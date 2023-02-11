@@ -40,7 +40,43 @@ namespace ADONET_Samples
         private void CommandsMenu_Click(object sender, RoutedEventArgs e)
         {
             contentArea.Children.Clear();
-            //contentArea.Children.Add(new CommandControl());
+            contentArea.Children.Add(new CommandControl());
         }
+
+        private void DataReaderMenu_Click(object sender, RoutedEventArgs e)
+        {
+            contentArea.Children.Clear();
+            contentArea.Children.Add(new DataReaderControl());
+        }
+
+        private void ExceptionHandlingMenu_Click(object sender, RoutedEventArgs e)
+        {
+            contentArea.Children.Clear();
+            contentArea.Children.Add(new ExceptionControl());
+        }
+        private void DataTableMenu_Click(object sender, RoutedEventArgs e)
+        {
+            contentArea.Children.Clear();
+            contentArea.Children.Add(new DataTableControl());
+        }
+
+        private void DataViewMenu_Click(object sender, RoutedEventArgs e)
+        {
+            contentArea.Children.Clear();
+            contentArea.Children.Add(new DataViewControl());
+        }
+
+        private void DataRowColumnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            contentArea.Children.Clear();
+            contentArea.Children.Add(new DataRowColumnControl());
+        }
+
+        private void BuilderMenu_Click(object sender, RoutedEventArgs e)
+        {
+            contentArea.Children.Clear();
+            contentArea.Children.Add(new BuilderControl());
+        }
+        
     }
 }

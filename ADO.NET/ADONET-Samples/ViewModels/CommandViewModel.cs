@@ -11,7 +11,7 @@ namespace ADONET_Samples.ViewModels
     {
         #region Private Variables
         private Product _InputEntity = new Product { ProductId = -1, ProductName = "A New Product", IntroductionDate = DateTime.Now, Price = 29, RetireDate = null, Url = "www.fairwaytech.com" };
-        private Product _SearchEntity = new Product { ProductName = "WPF%" };
+        private Product _SearchEntity = new Product { ProductName = "VB%" };
         #endregion
 
         #region Public Properties
